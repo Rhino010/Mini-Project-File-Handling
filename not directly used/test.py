@@ -43,11 +43,11 @@ print(test_dict)
                 if line == '':
                     continue
                 if not line.startswith(" "): #If the line does not start with a space it will assume it is the outer key.
-                    current_key = line[:-1].strip() #This will look for the entire line up until the ':' since the ':' should be the last part of the string 
+                    current_key = line[:-1] #This will look for the entire line up until the ':' since the ':' should be the last part of the string 
                     contacts[current_key] = {} #This will initialize a key associated to an empty dictionary to start the inner key value pairs
                 else:
                     if ':' in line: #Checks for the colon in the line to see if there is in fact a key value pair, if not it will skip
                         inner_key, value = line.split(": ", 1) #This will set a max split of 1 so there is only the key with one value.
-                        contacts[current_key][inner_key] = (value) + (',')
+                        contacts[current_key][inner_key] = (value)
                     else:
                         print("Skipping line.")

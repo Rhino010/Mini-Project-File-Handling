@@ -66,10 +66,18 @@ def display_contacts(contact_dict):
 
 # Exports information to 'contacts.txt'. Hard coded the dictionary layout for increased readability. An easier way would be to use the json module .dumps() method, but wanted to stay consistent with the lesson.
 def export_contacts(filename, contacts):
-    pass
+    with open(filename, 'w') as file:
+        for user, info in contacts.items():
+            file.write(f"{user},{info['name']},{info['phone_number']},{info['notes']}\n")
+    print("Contacts exported to contacts.txt successfully.")
 
-def import_contacts(filename, contacts):
-    pass
+
+def import_contacts(filename,contacts):
+    with open(filename, 'r') as file:
+        for line in file:
+            email,name,phone_number,notes = line.strip().split(',')
+            contacts[email] = {"name":name, "phone_number": phone_number, "notes": notes, "email": email}
+    print("Contacts imported successfully.")
 
 
 def main():
